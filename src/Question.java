@@ -13,4 +13,18 @@ public class Question {
     public String getQuestion() {
         return question;
     }
+
+    public void print() {
+        System.out.println(question);
+        System.out.println(answer);
+    }
+    public void validate(String reponse) {
+        if (reponse.equals("a")) {
+            System.out.println("oui");
+        } else {
+            System.out.println("non");
+        }
+
+    }
 }
+

@@ -18,15 +18,13 @@ public class Main {
         String q = "Si le feu est rouge, je dois m'arrêter. Le feu est rouge, que dois-je faire ?";
         String r = "a/ je m'arrête";
         Question question = new Question(q, r);
-        System.out.println(question.getQuestion());
-        System.out.println(question.getAnswer());
+        //print
+        question.print();
+        //input
         Scanner scanner = new Scanner(System.in);
         System.out.println("votre reponse");
         String reponse = scanner.nextLine();
-        if (reponse.equals("a")) {
-            System.out.println("oui");
-        } else {
-            System.out.println("non");
-        }
-    }
+
+        //validate
+        question.validate(reponse);    }
 }
