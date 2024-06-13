@@ -16,7 +16,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        // Mise en place du jeu de données
+
         List<Question> questions = new ArrayList<>();
 
         Question question1 = new Question("Au feu, je m'arrête ?");
@@ -24,7 +24,7 @@ public class Main {
         question1.ajouterReponse("b", "non");
         question1.ajouterReponse("c", "je sais pas");
         question1.setBonneReponse("a");
-        questions.add(question1);
+        boolean add = questions.add(question1);
 
         Question question2 = new Question("La couleur du PC ?");
         question2.ajouterReponse("a", "noir");
@@ -51,17 +51,18 @@ public class Main {
         question5.setBonneReponse("a");
         questions.add(question5);
 
-        // Boucle sur les questions
         Scanner scanner = new Scanner(System.in);
         int score = 0;
         for (Question question : questions) {
             question.afficher();
             System.out.print("Votre réponse : ");
             String reponse = scanner.nextLine();
-            if (question.validate(reponse)); {
+            if (question.validate(reponse)) ;
+            {
                 System.out.println("Bonne réponse !");
                 int i = score++;
-            }  {
+            }
+            {
                 System.out.println("Mauvaise réponse.");
             }
         }
