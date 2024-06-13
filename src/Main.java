@@ -1,6 +1,7 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
-
 
 public class Main {
 
@@ -9,61 +10,63 @@ public class Main {
         int aleatoire = random.nextInt(2);
         if (aleatoire == 0) {
             return "rouge";
-
         } else {
             return "vert";
         }
     }
+
     public static void main(String[] args) {
-        //Mise en place du jeu de données
+        // Mise en place du jeu de données
+        List<Question> questions = new ArrayList<>();
+
         Question question1 = new Question("Au feu, je m'arrête ?");
         question1.ajouterReponse("a", "oui");
         question1.ajouterReponse("b", "non");
         question1.ajouterReponse("c", "je sais pas");
         question1.setBonneReponse("a");
-        question.add(question1);
+        questions.add(question1);
 
-        Question question2 = new Question("la couleur du pc");
+        Question question2 = new Question("La couleur du PC ?");
         question2.ajouterReponse("a", "noir");
-        question2.ajouterReponse("b" , "blanc");
+        question2.ajouterReponse("b", "blanc");
         question2.ajouterReponse("c", "vert");
         question2.setBonneReponse("a");
-        question.add(question2);
+        questions.add(question2);
 
-        Question question3 = new Question("couleur du panneaux en face");
+        Question question3 = new Question("Couleur du panneau en face ?");
         question3.ajouterReponse("a", "orange");
-        question3.ajouterReponse("b" , "rouge");
-        question3.setBonneReponse("B");
-        question.add(question3);
+        question3.ajouterReponse("b", "rouge");
+        question3.setBonneReponse("b");
+        questions.add(question3);
 
-        Question question4 = new Question("couleur du feux rouge");
+        Question question4 = new Question("Couleur du feu rouge ?");
         question4.ajouterReponse("a", "jaune");
-        question4.ajouterReponse("b", "vert");
+        question4.ajouterReponse("b", "rouge");
         question4.setBonneReponse("b");
-        question.add(question4);
+        questions.add(question4);
 
-        Question question5 = new Question("passage pieton dans 50m,que dois faire");
+        Question question5 = new Question("Passage piéton dans 50m, que dois-je faire ?");
         question5.ajouterReponse("a", "Je ralentis");
         question5.ajouterReponse("b", "Je m'arrête");
         question5.setBonneReponse("a");
-        question.add
+        questions.add(question5);
 
-
-        for (int i = 0; i < 5; i ++) {
-            System.out.println("i est : " + i);
+        // Boucle sur les questions
+        Scanner scanner = new Scanner(System.in);
+        int score = 0;
+        for (Question question : questions) {
+            question.afficher();
+            System.out.print("Votre réponse : ");
+            String reponse = scanner.nextLine();
+            if (question.validate(reponse)); {
+                System.out.println("Bonne réponse !");
+                int i = score++;
+            }  {
+                System.out.println("Mauvaise réponse.");
+            }
         }
 
-        //affichage à l'utilisateur
-        Question.print();
-
-        //Saisie de la réponse
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("votre reponse");
-        String reponse = scanner.nextLine();
-
-        //validate
-        Question.validate(reponse);
-
-
+        // Affichage du score final
+        System.out.println("Votre score final est : " + score + "/" + questions.size());
     }
 }

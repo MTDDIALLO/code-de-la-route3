@@ -1,13 +1,12 @@
 import java.util.HashMap;
 import java.util.Map;
-
 public class Question {
     private String question;
     private Map<String, String> reponses;
     private String bonneReponse;
 
-    public Question(String q) {
-        this.question = question;
+    public Question(String question) {
+        this.question = question; // Correction ici
         this.reponses = new HashMap<>();
     }
 
@@ -19,7 +18,7 @@ public class Question {
         if (reponses.containsKey(lettre)) {
             this.bonneReponse = lettre;
         } else {
-            System.out.println();
+            System.out.println("La réponse " + lettre + " n'est pas une option valide.");
         }
     }
 
@@ -38,16 +37,19 @@ public class Question {
         }
     }
 
-    public void validate(String lettreReponse) {
+    public boolean validate(String lettreReponse) {
         if (lettreReponse.equals(bonneReponse)) {
-            System.out.println("oui");
+            System.out.println("Oui");
         } else {
-            System.out.println("non, la bonne reponse etait " +bonneReponse);
+            System.out.println("Non, la bonne réponse était " + bonneReponse + ": " + reponses.get(bonneReponse));
         }
+        return false;
     }
 
-
+    public void afficher() {
     }
+}
+
 
 
 
