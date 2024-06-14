@@ -51,23 +51,32 @@ public class Main {
         question5.setBonneReponse("a");
         questions.add(question5);
 
+
         Scanner scanner = new Scanner(System.in);
-        int score = 0;
-        for (Question question : questions) {
-            question.afficher();
+        int score = 5;
+        
+
+
+         for(Question question : questions) {
+            question.print();
             System.out.print("Votre réponse : ");
             String reponse = scanner.nextLine();
-            if (question.validate(reponse)) ;
-            {
-                System.out.println("Bonne réponse !");
-                int i = score++;
-            }
-            {
-                System.out.println("Mauvaise réponse.");
-            }
+            question.validate(reponse);
+
+
+
+
+
         }
 
         // Affichage du score final
         System.out.println("Votre score final est : " + score + "/" + questions.size());
+
+        if (score ==5) {
+            System.out.println("vous avez gagné");
+        } else {
+            System.out.println("vous avez perdu");
+        }
+
     }
 }

@@ -46,8 +46,7 @@ public class Question {
         return false;
     }
 
-    public void afficher() {
-    }
+
 }
 
 
