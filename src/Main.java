@@ -53,26 +53,24 @@ public class Main {
 
 
         Scanner scanner = new Scanner(System.in);
-        int score = 5;
-        
+        float score = 0;
+
 
 
          for(Question question : questions) {
             question.print();
             System.out.print("Votre réponse : ");
             String reponse = scanner.nextLine();
-            question.validate(reponse);
-
-
-
-
-
+            boolean isValid = question.validate(reponse);
+            if(isValid) {
+                score ++;
+            }
         }
 
         // Affichage du score final
         System.out.println("Votre score final est : " + score + "/" + questions.size());
-
-        if (score ==5) {
+        float minResult = 80 * questions.size() / 100;
+        if (score >= minResult) {
             System.out.println("vous avez gagné");
         } else {
             System.out.println("vous avez perdu");

@@ -40,10 +40,12 @@ public class Question {
     public boolean validate(String lettreReponse) {
         if (lettreReponse.equals(bonneReponse)) {
             System.out.println("Oui");
+            return true;
         } else {
             System.out.println("Non, la bonne réponse était " + bonneReponse + ": " + reponses.get(bonneReponse));
+            return false;
         }
-        return false;
+
     }
 
 
