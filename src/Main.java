@@ -17,6 +17,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+
         List<Question> questions = new ArrayList<>();
 
         Question question1 = new Question("Au feu, je m'arrête ?");
@@ -53,28 +54,49 @@ public class Main {
 
 
         Scanner scanner = new Scanner(System.in);
-        float score = 0;
+        boolean continuer = true;
+
+        while (continuer) {
+            System.out.print("Voulez-vous passer votre code ? O/N: ");
+            String choice = scanner.nextLine();
+
+            if (choice.equalsIgnoreCase("O")) {
+                int score = 0;
+                for (Question question : questions) {
+                    question.print();
+                    System.out.print("Votre réponse : ");
+                    String reponse = scanner.nextLine();
+                    boolean isValid = question.validate(reponse);
+                    if (isValid) {
+                        score++;
+                    }
+                }
+
+                // Affichage du score final
+                System.out.println("Votre score final est : " + score + "/" + questions.size());
+                float minResult = 80 * questions.size() / 100;
+                if (score >= minResult) {
+                    System.out.println("vous avez gagné");
+                } else {
+                    System.out.println("vous avez perdu");
+                }
+                System.out.print("Voulez-vous passer votre code ? O/N: ");
+                choice = scanner.nextLine();
+                if (choice.equalsIgnoreCase("N")) {
+                    continuer = true;
+                } else {
+                    continuer = false;
+                }
 
 
 
-         for(Question question : questions) {
-            question.print();
-            System.out.print("Votre réponse : ");
-            String reponse = scanner.nextLine();
-            boolean isValid = question.validate(reponse);
-            if(isValid) {
-                score ++;
+                System.out.println("Au revoir");
+
             }
         }
-
-        // Affichage du score final
-        System.out.println("Votre score final est : " + score + "/" + questions.size());
-        float minResult = 80 * questions.size() / 100;
-        if (score >= minResult) {
-            System.out.println("vous avez gagné");
-        } else {
-            System.out.println("vous avez perdu");
-        }
-
     }
 }
+
+
+
+
