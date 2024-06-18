@@ -83,14 +83,12 @@ public class Main {
                 System.out.print("Voulez-vous passer votre code ? O/N: ");
                 choice = scanner.nextLine();
                 if (choice.equalsIgnoreCase("N")) {
-                    continuer = true;
-                } else {
                     continuer = false;
+                    System.out.println("Au revoir");
+                } else {
+                    continuer = true;
                 }
 
-
-
-                System.out.println("Au revoir");
 
             }
         }
